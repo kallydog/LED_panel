@@ -211,6 +211,8 @@ void fetchHomeAssistantData() {
       dma_display->setCursor(18, 41);
       dma_display->setTextColor(dma_display->color565(0, 255, 0), dma_display->color565(0, 0, 0));
       dma_display->print(windSpeed, 1);  // 1 decimal place
+      x = dma_display->getCursorX();
+      dma_display->setCursor(x+1, 41);
       dma_display->print(unit);
 
       // Draw the icon
