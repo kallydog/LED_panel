@@ -88,7 +88,7 @@ void setup() {
   // 4. Start the display
   dma_display = new MatrixPanel_I2S_DMA(mxconfig);
   dma_display->begin();
-  dma_display->setBrightness8(10);
+  dma_display->setBrightness8(60);
   dma_display->clearScreen();
 
   // 2. WiFi Setup
@@ -249,13 +249,7 @@ void fetchHomeAssistantData() {
 
       float lux = doc["state"].as<float>();
 
-      if (lux < 60) {
-        dma_display->setBrightness8(20);  // Dim for night
-      } else if (lux < 100) {
-        dma_display->setBrightness8(50);  // Medium for indoors
-      } else {
-        dma_display->setBrightness8(80);  // Full blast for daylight
-      }
+      dma_display->setBrightness8(lux/2.5 + 10);  // Dim for night
     }
   }
 }
